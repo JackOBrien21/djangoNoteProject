@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <strong>Current User: {{username}}</strong><br><br>
+    {% for note in list_of_notes %}
+    <h3>{{note.title}}</h3>
+    <h5>{{note.content}}</h5> <br> <br>
+    {% endfor %}
+    <button type="submit"><a href="/signout">SignOut</a></button>
+    <button type="submit"><a href="/addnote">Add Note</a></button>
+    {% else %}
+    <button type="submit"><a href="/signup">SignUp</a></button>
+    <button type="submit"><a href="/signin">SignIn</a></button>
+    {% endif %}
+    <h3>This is the index template</h3>
+</body>
+</html>
