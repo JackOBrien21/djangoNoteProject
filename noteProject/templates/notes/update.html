@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Note</title>
+</head>
+<body>
+    <h3>You are at the update template</h3>
+    <form action="{% url 'notes:update' note_instance.id %}" method="post">
+        {% csrf_token %}
+        <label for="title">Note Title: </label>
+        <input type="text" id="title" name="title" placeholder="Update your title here" maxlength="20" required value={{note_instance.title}}> <br> <br>
+        <label for="content">Note Content:</label>
+        <input type="text" id="content" name="content" placeholder="Update your note content here" maxlength="200" required value={{note_instance.content}}> <br> <br>
+        <button type="submit">Update the current note!</button>
+    </form>
+    <button><a href="/">Go back to the home page</a></button>
+</body>
+</html>

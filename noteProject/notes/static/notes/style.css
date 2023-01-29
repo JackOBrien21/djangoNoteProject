@@ -1,0 +1,9 @@
+.test {
+    color: red;
+}
+
+.note--container {
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+}

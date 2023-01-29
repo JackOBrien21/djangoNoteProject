@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>This is the delete template</h3> <br>
+    {%if note_instance is not None %}
+    <h4>{{note_instance.title}}</h4>
+    <div>{{note_instance.content}}</div>
+    <h5>Are you sure you want to delete note # {{note_instance.id}}</h5>
+    <form action="{% url 'notes:delete' note_instance.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete Note?</button>
+    </form>
+    {% endif %}
+</body>
+</html>

@@ -1,18 +1,33 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'notes/style.css' %}">
+
     <title>Document</title>
 </head>
 <body>
     {% if user.is_authenticated %}
     <strong>Current User: {{username}}</strong><br><br>
     {% for note in list_of_notes %}
-    <h3>{{note.title}}</h3>
-    <h5>{{note.content}}</h5> <br> <br>
+    <div class="note--container">
+        <h3 class="test">{{note.title}}</h3>
+        <h5>{{note.content}}</h5>
+        <button type="submit"><a href="{% url 'notes:delete' note.id %}">Delete This Note</a></button>
+        <button type="submit"><a href="{% url 'notes:detail' note.id %}">View This Note</a></button>
+        <button type="submit"><a href="{% url 'notes:update' note.id %}">Update This Note</a></button>
+
+        <br>
+        <br>
+    </div>
+    
     {% endfor %}
+    <br>
     <button type="submit"><a href="/signout">SignOut</a></button>
     <button type="submit"><a href="/addnote">Add Note</a></button>
     {% else %}
