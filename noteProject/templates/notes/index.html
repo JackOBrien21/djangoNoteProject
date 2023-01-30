@@ -46,6 +46,11 @@
     {% else %}
     <div class="login--page">
         <div class="login--box">
+            {% if error %}
+            <header class="error--header">
+                <strong class="error--header--message">Error: {{error}}</strong>
+            </header>
+            {% endif %}
             <h3>Welcome to my Django Notes App</h3>
             <div class="login--box--buttons">
                 <a href="/signup">

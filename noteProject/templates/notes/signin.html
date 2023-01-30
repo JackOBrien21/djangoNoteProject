@@ -17,15 +17,23 @@
             <div class="signin--box">
                 <form action="/signin" method="post" class="signin--form">
                     {% csrf_token %}
-                        <h3>Sign In to my Django Notes App</h3>
+                        {% if error %}
+                        <header class="error--header">
+                            <strong class="error--header--message">Error: {{error}}</strong>
+                        </header>
+                        {% endif %}
+                        <h3>Sign In to your Django Notes App Account</h3>
                         <label for="username" class="label">Username: </label>
                         <input type="text" id="username" name="username" placeholder="Enter your username" required>
                         <br>
                         <label for="pass1" class="label">Password: </label>
                         <input type="password" id="pass1" name="pass1" placeholder="Enter your password" required> <br> <br>
-                        <br>
-                        <button type="submit" class="signin--button">Sign In! </button>
+                        <button type="submit" class="signin--button">Sign In!</button>
                 </form>
+                <br>
+                <a href="/" class="signin--button"><button type="submit" class="signin--button">Go Back!</button></a>
+                
+
             </div>
         </div>
     </div>

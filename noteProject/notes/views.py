@@ -25,8 +25,9 @@ def signin(request):
             list_of_notes = Note.objects.filter(author=username)
             return render(request, "notes/index.html", {'username' : username, 'list_of_notes': list_of_notes})
         else:
-            messages.error(request, "Bad Credentials")
-            return redirect('/signin')
+            error = "Your Information Didn't Match, Try Again"
+            ctx = {'error':error}
+            return render(request, 'notes/signin.html', ctx)
 
     return render(request, "notes/signin.html")
 
@@ -39,15 +40,20 @@ def signup(request):
         email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
+        if (pass1 == pass2):
+            myuser = User.objects.create_user(username, email, pass1)
+            myuser.first_name = fname
+            myuser.last_name = lname
 
-        myuser = User.objects.create_user(username, email, pass1)
-        myuser.first_name = fname
-        myuser.last_name = lname
+            myuser.save()
 
-        myuser.save()
-
-        messages.success(request, "Your Account has been successfully created")
-        return redirect('/signin')
+            messages.success(request, "Your Account has been successfully created")
+            return redirect('/signin')
+        else:
+            error = "Your Password's Didn't Match, Try Again"
+            ctx = {'error':error}
+            return render(request, 'notes/index.html', ctx)
+        
     return render(request, "notes/signup.html")
 
 def signout(request):
