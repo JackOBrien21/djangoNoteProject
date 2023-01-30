@@ -1,25 +1,77 @@
+:root {
+    --beige: rgb(245, 245, 220);
+    --navy-blue: rgb(0, 0, 128);
+    --muted-green: rgb(102, 153, 102);
+    --deep-red: rgb(165, 42, 42);
+    --light-gray: rgb(211, 211, 211);
+    --dark-brown: rgb(92, 64, 51);
+    --yellow: rgb(255, 255, 0);
+    --light-blue: rgb(135, 206, 235);
+    --coral: rgb(255, 127, 80);
+    --black: rgb(0, 0, 0);
+    --light-pink: rgb(255, 182, 193);
+}
+
 html {
+    font-family: 'Roboto Condensed', sans-serif;
     height: 100%;
 }
 
 body {
-    background-color: lightgray;
+    background-color: var(--beige);
     margin: 0;
     height: 100%;
 }
 
+
+.login--box {
+    background-color: var(--light-pink);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-color: black;
+    border-style: solid;
+}
+
 a {
     text-decoration: none;
-    color: black;
     cursor:pointer;
 }
+
 
 a:hover {
     cursor: pointer;
 }
 
+a:visited {
+    color: black;
+}
+
+button {
+    background-color: var(--light-blue);
+    border-color: var(--light-blue);
+}
+
 button:hover {
     cursor: pointer;
+}
+
+.header {
+    height: 5vh;
+    display: flex;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.header--username {
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2em;
 }
 
 .login--page {
@@ -29,16 +81,6 @@ button:hover {
     align-items: center;
 }
 
-.login--box {
-    background-color: rgb(230, 230, 230);
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-color: black;
-    border-style: solid;
-}
 
 .label {
     margin-bottom: 2px;
@@ -54,7 +96,7 @@ button:hover {
 }
 
 .signin--box {
-    background-color: rgb(230, 230, 230);
+    background-color: var(--light-pink);
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -83,7 +125,7 @@ button:hover {
 }
 
 .signup--box {
-    background-color: rgb(230, 230, 230);
+    background-color: var(--light-pink);
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -108,7 +150,7 @@ button:hover {
 }
 
 .update--box {
-    background-color: rgb(230, 230, 230);
+    background-color: var(--light-pink);
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -133,7 +175,7 @@ button:hover {
 }
 
 .add--box {
-    background-color: rgb(230, 230, 230);
+    background-color: var(--light-pink);
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -158,7 +200,7 @@ button:hover {
 }
 
 .delete--box {
-    background-color: rgb(230, 230, 230);
+    background-color: var(--light-pink);
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -182,7 +224,8 @@ button:hover {
 }
 
 .detail--box {
-    background-color: rgb(230, 230, 230);
+    background-color: var(--light-pink);
+    width: 50%;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -193,19 +236,17 @@ button:hover {
     border-style: solid;
 }
 
+.detail--content {
+    word-break: break-all;
+    white-space: normal;
+}
+
 .page--content {
     margin: 10px;
     height: 100%;
 }
 
-.header {
-    height: 5vh;
-    background-color: lightgreen;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-}
+
 
 .error--header {
     height: 5vh;
@@ -229,6 +270,7 @@ button:hover {
 
 .grid--item {
     border-color: black;
+    background-color: var(--light-pink);
     border-style: solid;
     display: inline-block;
 }
@@ -239,21 +281,23 @@ button:hover {
     row-gap: 10px;
 }
 
-.grid--item {
-    background-color: rgb(230, 230, 230);
-}
-
 .grid--item--title {
+    color: rgb(141 79 50);
+    font-size: 24px;
     display: flex;
     justify-content: center;
-    color: red;
 }
 
 .grid--item--content {
+    display: flex;
+    justify-content: center;
     margin-left: 5px;
+    font-style: italic;
+    font-size: 16px;
 }
 
 .grid--item--buttons {
     display: flex;
     justify-content: space-around;
 }
+

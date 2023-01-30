@@ -6,3 +6,6 @@ cursor.execute("SELECT * FROM notes_Note") <---- "SELECT * FROM myApp_myModel"
 rows = cursor.fetchall()
 for row in rows:
     print(row)
+
+# NEXT THING IS CREATE A NEW MODEL ENTRY WHERE AUTHOR IS A FOREIGN KEY
+# SO THAT WHEN A USER IS DELETED ALL ITS CORRESPONDING NOTES WILL ALSO BE DELETED

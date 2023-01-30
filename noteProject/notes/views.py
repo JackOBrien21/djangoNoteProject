@@ -6,10 +6,20 @@ from django.contrib.auth import authenticate, login, logout
 from notes.models import Note
 from django.shortcuts import get_object_or_404
 # Create your views here.
+
+# def delete_user_entries(username):
+#     try:
+#         user = User.objects.get(username=username)
+#     except User.DoesNotExist:
+#         return "User not found."
+    
+#     # delete entries in the database whose author field matches the user's name
+#     user.entry_set.all().delete()
+#     user.delete()
+#     return "User and related entries have been deleted."
 def index(request):
     username = request.user
     list_of_notes = Note.objects.filter(author=username)
-
     return render(request, "notes/index.html", {'username':username, 'list_of_notes':list_of_notes})
 
 def signin(request):
