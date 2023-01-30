@@ -1,9 +1,221 @@
-.test {
-    color: red;
+html {
+    height: 100%;
 }
 
-.note--container {
+body {
+    background-color: lightgray;
+    margin: 0;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    cursor:pointer;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.login--page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login--box {
+    background-color: rgb(230, 230, 230);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-color: black;
+    border-style: solid;
+}
+
+.label {
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.signin--page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin--box {
+    background-color: rgb(230, 230, 230);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -10%;
+    justify-content: center;
+    border-color: black;
+    border-style: solid;
+}
+
+.signin--form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update--page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.update--box {
+    background-color: rgb(230, 230, 230);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -10%;
+    align-items: center;
+    justify-content: center;
+    border-color: black;
+    border-style: solid;
+}
+
+.update--form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add--page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add--box {
+    background-color: rgb(230, 230, 230);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -10%;
+    align-items: center;
+    justify-content: center;
+    border-color: black;
+    border-style: solid;
+}
+
+.add--form {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete--page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete--box {
+    background-color: rgb(230, 230, 230);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -10%;
+    justify-content: center;
+    border-color: black;
+    border-style: solid;
+}
+
+.delete--form {
+    margin-top: 20px;
+}
+
+.detail--page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail--box {
+    background-color: rgb(230, 230, 230);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -10%;
+    border-color: black;
+    border-style: solid;
+}
+
+.page--content {
+    margin: 10px;
+    height: 100%;
+}
+
+.header {
+    height: 5vh;
+    background-color: lightgreen;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.header--logout {
+    height: 65%;
+    width: 10vw;
+}
+
+.add--note--button {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.grid--item {
     border-color: black;
     border-style: solid;
     display: inline-block;
+}
+.note--container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.grid--item {
+    background-color: rgb(230, 230, 230);
+}
+
+.grid--item--title {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
+.grid--item--content {
+    margin-left: 5px;
+}
+
+.grid--item--buttons {
+    display: flex;
+    justify-content: space-around;
 }

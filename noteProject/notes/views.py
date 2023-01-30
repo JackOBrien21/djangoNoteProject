@@ -69,7 +69,7 @@ def addnote(request):
         list_of_notes = Note.objects.filter(author=username)
         ctx = {'list_of_notes': list_of_notes, 'username':username}
         return render(request, "notes/index.html", ctx)
-    return render(request, "notes/addnote.html")
+    return render(request, "notes/addnote.html", {'username':request.user})
 
 def delete(request, id):
     if (request.method == 'POST'):
@@ -80,25 +80,36 @@ def delete(request, id):
         # NOW WE WANT TO GET THE CORRESPONDING NOTE 
         return render(request, "notes/index.html", ctx)
     note_instance = Note.objects.get(pk=id)
-    if note_instance is not None:
-        ctx = {'note_instance' : note_instance, 'id':id}
+    if note_instance is None:
+        msg = "Failed to find the given note"
+        ctx = {'msg':msg}
+        return render(request, "notes/error.html", ctx)
+    if str(note_instance.author) == str(request.user):
+        ctx = {'note_instance':note_instance, 'username':request.user}
         return render(request, "notes/delete.html", ctx)
-    return render(request, "notes/delete.html")
+    else:
+        msg = "You aren't authorized to access the requested note"
+        ctx = {'msg' : msg}
+        return render(request, "notes/error.html")
 
 def detail(request, id):
     
     note_instance = get_object_or_404(Note, pk=id)
     if note_instance is not None and str(note_instance.author) == str(request.user):
-        ctx = {'note_instance':note_instance}
+        ctx = {'note_instance':note_instance, 'username':request.user}
         return render(request, "notes/detail.html", ctx)
     else:
-        return HttpResponse("Failed to find the given note")
+        msg = "Failed to find the given note"
+        ctx = {'msg' : msg}
+        return render(request, "notes/error.html", ctx)
     
 def update(request, id):
     note_instance = get_object_or_404(Note, pk=id)
 
     if (note_instance is None):
-        return HttpResponse("Failed to find the given note")
+        msg = "Failed to find the given note"
+        ctx = {'msg':msg}
+        return render(request, "notes/error.html", ctx)
     
     if (request.method == 'POST' and str(note_instance.author) == str(request.user)):
         note_instance.title = request.POST['title']
@@ -109,7 +120,9 @@ def update(request, id):
         return render(request, "notes/index.html", ctx)
     # JUST ROUTING TO /update/id bc dont want to change info if request==GET
     if str(note_instance.author) == str(request.user):
-        ctx = {'note_instance':note_instance}
+        ctx = {'note_instance':note_instance, 'username':request.user}
         return render(request, "notes/update.html", ctx)
     else:
-        return HttpResponse("Failed to find the given note")
+        msg = "You aren't authorized to access the requested note"
+        ctx = {'msg' : msg}
+        return render(request, "notes/error.html")

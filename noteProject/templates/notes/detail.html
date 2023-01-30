@@ -1,14 +1,29 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'notes/style.css' %}">
+    <title>Viewing Note {{note_instance.id}}</title>
 </head>
 <body>
-    <h3>This is the detail template</h3>
-    {{note_instance.title}}
-    <button type="submit"><a href="/">Go back to list of notes</a></button>
+    <header class="header">
+        <strong class="header--username">Current User: {{username}}</strong>
+        <a href="/signout"><button class="header--logout" type="submit">Sign Out</button></a>
+    </header>
+    <div class="page--content">
+        <div class="detail--page">
+            <div class="detail--box">
+                <h3>{{note_instance.title}}</h3>
+                {{note_instance.content}}
+                <br> <br>
+                <button type="submit"><a href="/">Go back to list of notes</a></button>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>

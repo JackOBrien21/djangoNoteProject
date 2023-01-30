@@ -1,21 +1,36 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'notes/style.css' %}">
+    <title>Deleting Note {{note_instance.id}}</title>
 </head>
 <body>
-    <h3>This is the delete template</h3> <br>
-    {%if note_instance is not None %}
-    <h4>{{note_instance.title}}</h4>
-    <div>{{note_instance.content}}</div>
-    <h5>Are you sure you want to delete note # {{note_instance.id}}</h5>
-    <form action="{% url 'notes:delete' note_instance.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Delete Note?</button>
-    </form>
-    {% endif %}
+    <header class="header">
+        <strong class="header--username">Current User: {{username}}</strong>
+        <a href="/signout"><button class="header--logout" type="submit">Sign Out</button></a>
+    </header>
+    <div class="page--content">   
+        <div class="delete--page">
+            <div class="delete--box">
+                {%if note_instance is not None %}
+                <h4>{{note_instance.title}}</h4>
+                <div>{{note_instance.content}}</div>
+                <form action="{% url 'notes:delete' note_instance.id %}" method="post" class="delete--form">
+                    {% csrf_token %}
+                    <button type="submit">Delete Note?</button>
+                    <button type="submit"><a href="/">Go back to list of notes</a></button>
+
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+    
 </body>
 </html>

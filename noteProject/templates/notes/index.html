@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,27 +12,51 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-    <strong>Current User: {{username}}</strong><br><br>
-    {% for note in list_of_notes %}
-    <div class="note--container">
-        <h3 class="test">{{note.title}}</h3>
-        <h5>{{note.content}}</h5>
-        <button type="submit"><a href="{% url 'notes:delete' note.id %}">Delete This Note</a></button>
-        <button type="submit"><a href="{% url 'notes:detail' note.id %}">View This Note</a></button>
-        <button type="submit"><a href="{% url 'notes:update' note.id %}">Update This Note</a></button>
-
-        <br>
-        <br>
-    </div>
-    
-    {% endfor %}
-    <br>
-    <button type="submit"><a href="/signout">SignOut</a></button>
-    <button type="submit"><a href="/addnote">Add Note</a></button>
+        <header class="header">
+            <strong class="header--username">Current User: {{username}}</strong>
+            <a href="/signout"><button class="header--logout" type="submit">Sign Out</button></a>
+        </header>
+        <a href="/addnote" class="add--note--button">
+            <button type="submit">Add Note</button>
+        </a>
+        <div class="page--content">
+            <div class="note--container">
+                {% for note in list_of_notes %}
+                    <div class="grid--item">
+                        <h3 class="grid--item--title">{{note.title}}</h3>
+                        <h5 class="grid--item--content">{{note.content|truncatechars:20}}</h5>
+                        <div class="grid--item--buttons">
+                            <a href="{% url 'notes:delete' note.id %}">
+                                <button type="submit">Delete Note</button>
+                            </a>
+                            <a href="{% url 'notes:detail' note.id %}">
+                                <button type="submit">View Note</button>
+                            </a>
+                            <a href="{% url 'notes:update' note.id %}">
+                                <button type="submit">Update this Note</button>
+                            </a>
+                        </div>      
+                        <br>
+                        <br>
+                    </div>
+                {% endfor %}
+            </div>
+            
+        </div>
     {% else %}
-    <button type="submit"><a href="/signup">SignUp</a></button>
-    <button type="submit"><a href="/signin">SignIn</a></button>
+    <div class="login--page">
+        <div class="login--box">
+            <h3>Welcome to my Django Notes App</h3>
+            <div class="login--box--buttons">
+                <a href="/signup">
+                    <button type="submit">Sign Up</button>
+                </a>
+                <a href="/signin">
+                    <button type="submit">Sign In</button>
+                </a>
+            </div>
+        </div>
+    </div>
     {% endif %}
-    <h3>This is the index template</h3>
 </body>
 </html>
